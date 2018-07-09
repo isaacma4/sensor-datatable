@@ -111,7 +111,6 @@ def filterListIncludingSnort(list, sensor, snortIds):
         list, sensor, snortIds, 'include')
 
 def getArgs():
-
     parser = argparse.ArgumentParser(description='Create Sensor Datatable')
     parser.add_argument('dataJson', metavar='data_json',
                         action='store', type=str,
@@ -129,7 +128,6 @@ def getArgs():
     parser.add_argument('-x', '--exclude-snort', dest='snortEx', action='store', 
                         type=str, nargs='+',
                         help='filtered data to exclude snort rule ids given')
-    
     args = parser.parse_args()
     return args
 
