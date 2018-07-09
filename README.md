@@ -15,6 +15,8 @@ This is how you would display all your information in your JSON in a datatable:
 
 	python create-sensor-datatable.py sensor_data.json
 
+Datatables will always be written to file _**datatable.txt**_.
+
 ### Filtering by IP addresses
 This is how you would filter based on **IP addresses** found in a row:
 
