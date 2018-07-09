@@ -48,7 +48,7 @@ The script allows to filter through the data using all four filter types listed 
 
 This is an example for how you would do so:
 
-	Ccreate-sensor-datatable.py sensor_data.json -i 10.1.28.200 82.202.196.66 61.136.101.103 10.1.100.2 -e 10.1.1.46 -s 2403472 2403431 2403334 2403456 -x 2403331
+	python create-sensor-datatable.py sensor_data.json -i 10.1.28.200 82.202.196.66 61.136.101.103 10.1.100.2 -e 10.1.1.46 -s 2403472 2403431 2403334 2403456 -x 2403331
 
 ### Example Datatable
 Below is an example datatable of running the command shown in the **Multiple Filters** section
