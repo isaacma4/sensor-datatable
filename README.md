@@ -61,3 +61,20 @@ Below is an example datatable of running the command shown in the **Multiple Fil
 	|   3   | 1:2403334:40639 | ET CINS Active Threat Intelligence Poor Reputation IP TCP group 18 | Misc Attack |    2     | Sensor #42 |        8        |                                                                                 [{'source_ip': '36.110.88.169', 'dest_ip': '10.1.1.32', 'alert_count_sum': 1}, {'source_ip': '31.208.92.150', 'dest_ip': '10.1.1.215', 'alert_count_sum': 1}, {'source_ip': '31.207.47.86', 'dest_ip': '10.1.28.160', 'alert_count_sum': 1}, {'source_ip': '31.207.47.86', 'dest_ip': '10.1.28.148', 'alert_count_sum': 1}, {'source_ip': '31.207.47.86', 'dest_ip': '10.1.1.166', 'alert_count_sum': 1}, {'source_ip': '31.202.117.8', 'dest_ip': '10.1.28.216', 'alert_count_sum': 1}, {'source_ip': '31.3.88.166', 'dest_ip': '10.1.28.200', 'alert_count_sum': 1}, {'source_ip': '36.110.88.169', 'dest_ip': '10.1.28.106', 'alert_count_sum': 1}]                                                                                 |
 	|   4   | 1:2403431:40807 | ET CINS Active Threat Intelligence Poor Reputation IP UDP group 66 | Misc Attack |    2     | Sensor #42 |        8        |                                                                              [{'source_ip': '83.143.246.30', 'dest_ip': '10.1.28.214', 'alert_count_sum': 1}, {'source_ip': '83.143.246.30', 'dest_ip': '10.1.28.69', 'alert_count_sum': 1}, {'source_ip': '83.143.246.30', 'dest_ip': '10.1.1.137', 'alert_count_sum': 1}, {'source_ip': '83.143.246.30', 'dest_ip': '10.1.28.91', 'alert_count_sum': 1}, {'source_ip': '83.143.246.30', 'dest_ip': '10.1.28.200', 'alert_count_sum': 1}, {'source_ip': '83.143.246.30', 'dest_ip': '10.1.28.154', 'alert_count_sum': 1}, {'source_ip': '83.143.246.30', 'dest_ip': '10.1.28.92', 'alert_count_sum': 1}, {'source_ip': '83.143.246.30', 'dest_ip': '10.1.1.135', 'alert_count_sum': 1}]                                                                               |
 	+-------+-----------------+--------------------------------------------------------------------+-------------+----------+------------+-----------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+### Hosting Webpage
+After you have run the Python script to filter all the data desired, you may now display the contents on a webpage via a Dockerfile found in _**sensor-datatable-app**_.
+
+Run the commands below in succession in the folder mentioned above:
+
+	docker build -t sensor-datatable-app .
+
+(you can use any name as your docker image)
+
+	docker run -dit --name running-datable-app -p 8080:80 sensor-datatable-app
+
+(you can use any docker container name and forwarding port, but you must use port 80 as the containers port and the localhost port 8080 is recommended).
+
+Access your webpage by typing in your browser:
+
+	localhost:8080
