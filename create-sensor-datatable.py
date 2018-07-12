@@ -18,12 +18,14 @@
 #
 ######################################################
 
+import os
 import argparse
 import json
 from sensor import Sensor
 from prettytable import PrettyTable
 
-OutputFile = 'datatable.txt'
+Filename = os.path.dirname(__file__)
+OutputFile = os.path.join(Filename, 'sensor-datatable-app', 'datatable.html')
 
 def filterListExcludingIp(list, sensor, ipAddresses):
     """
@@ -170,8 +172,15 @@ def printSensorsDatatable(sensors):
                        sensor.alertCountSum,
                        sensor.getHighestAlertCountSumCPs()])
         i += 1
+    htmlText = """<html>
+<head>
+  <link rel="stylesheet" type="text/css" href="styles.css" media="screen" />
+  <title>Sensors Datatable</title>
+</head>
+<body><font face="courier new">{0}</font></body>
+</html>""".format(str(table).replace('\n', '<br>'))
     with open(OutputFile, 'w') as f:
-        f.write(str(table))
+        f.write(htmlText)
 
 def sortSensorsByAlertCountSum(sensorsList):
     """
@@ -254,8 +263,12 @@ def main():
                         filterListExcludingSnort(filteredSensorsList,
                                                  sensor,
                                                  args.snortEx)
-        sortSensorsByAlertCountSum(filteredSensorsList)
-        printSensorsDatatable(filteredSensorsList)
+        if filteredSensorsList:
+            sortSensorsByAlertCountSum(filteredSensorsList)
+            printSensorsDatatable(filteredSensorsList)
+        else:
+            sortSensorsByAlertCountSum(sensors)
+            printSensorsDatatable(sensors)
 
 if __name__ == "__main__":
     main()
